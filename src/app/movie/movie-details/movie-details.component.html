@@ -1,0 +1,35 @@
+<div class="movie-details">
+
+    <div *ngIf="movieInfo" class="movie-details-info">
+        <img [src]="movieInfo.posterUrl" [alt]="movieInfo.title">
+        <div class="">
+            <h2>{{movieInfo.title}}</h2>
+            <p>Year: {{movieInfo.year}}</p>
+            <p>Duration: {{movieInfo.duration}}</p>
+            <p>Rating: {{movieInfo.rating}}</p>
+            <a routerLink="/movies">Return to list</a>
+        </div>
+
+        <div class="movie-details-cast">
+            <h2>Cast</h2>
+            <p *ngFor="let cast of movieCast">{{cast}}</p>
+        </div>
+    </div>
+
+    <div class="movie-details-comments">
+        <h2>Comments</h2>
+        <button *ngIf="!showComments" (click)="switchShowComments()">Show comments</button>
+        <div *ngIf="showComments">
+            <div *ngFor="let comment of movieComments" class="movie-details-comments-item">
+                <p>{{comment.message}}</p>
+                <p>{{comment.created_at | date: 'dd/MM/yyyy h:mm:ss a'}}</p>
+            </div>
+
+            <div class="movie-details-comments-form">
+                <textarea name="" id="" cols="30" rows="10" [(ngModel)]="commentText"></textarea>
+                <button (click)="sendComment()">Send</button>
+            </div>
+        </div>
+    </div>
+
+</div>

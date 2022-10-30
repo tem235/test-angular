@@ -1,0 +1,21 @@
+<div class="login">
+    <div class="login-wrap">
+        <h1>Login</h1>
+        <h3 *ngIf="err">{{err}}</h3>
+        <form [formGroup]="loginForm" class="login-form">
+            <div class="login-form-control">
+                <input type="email" formControlName="username" id="username">
+                <div>
+                    <span *ngIf="_username?.errors">Invalid email</span>
+                </div>
+            </div>
+            <div class="login-form-control">
+                <input type="password" formControlName="password" id="password">
+                <div>
+                    <span *ngIf="_password?.errors">This field can not be empty</span>
+                </div>
+            </div>
+            <button [disabled]="loginForm.invalid" (click)="submit()">Submit</button>
+        </form>
+    </div>
+</div>

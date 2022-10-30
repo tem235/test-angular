@@ -1,0 +1,4 @@
+<div class="movies-list">
+    <app-movie-card *ngFor="let movie of moviesList" [movie]="movie"></app-movie-card>
+    <button (click)="logout()">Logout</button>
+</div>
